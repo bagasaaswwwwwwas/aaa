@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Website | Bagas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/20 dark:border-gray-700/20 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">
+                            B
+                        </span>
+                    </div>
+                    <span
+                        class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Bagas
+                    </span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home"
+                        class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Home</a>
+                    <a href="#about"
+                        class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">About</a>
+                    <a href="#skills"
+                        class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Skills</a>
+                    <a href="#certificat"
+                        class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Certificat</a>
+                    <a href="#projects"
+                        class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Projects</a>
+                    <a href="#contact"
+                        class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Contact</a>
+                </div>
+
+                <!-- Auth & Theme Controls -->
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300">
+                        <i class="fas fa-moon text-gray-600 dark:text-gray-400"></i>
+                        <i class="fas fa-sun text-gray-600 dark:text-gray-400 hidden"></i>
+                    </button>
+
+                    <!-- Auth Buttons -->
+                    <div id="auth-buttons" class="hidden md:flex items-center space-x-3">
+                        <a href="auth.html"
+                            class="px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                            Sign In
+                        </a>
+                        <a href="auth.html?mode=signup"
+                            class="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                            Sign Up
+                        </a>
+                    </div>
+
+                    <!-- User Profile (Hidden by default) -->
+                    <div id="user-profile" class="hidden relative">
+                        <button id="profile-dropdown-btn"
+                            class="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                            <div
+                                class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                                <span id="user-initial" class="text-white text-sm font-semibold"></span>
+                            </div>
+                            <span id="user-name" class="text-sm font-medium hidden md:block"></span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown"
+                            class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 hidden">
+                            <div class="py-2">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <i class="fas fa-user mr-2"></i>Profile
+                                </a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <i class="fas fa-cog mr-2"></i>Settings
+                                </a>
+                                <hr class="my-1 border-gray-200 dark:border-gray-700">
+                                <button id="logout-btn"
+                                    class="w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button"
+                        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                        <i class="fas fa-bars text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
+                style="max-height: 0;">
+                <div class="py-4 space-y-4 border-t border-gray-200 dark:border-gray-700 mt-4">
+                    <a href="#home"
+                        class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Home</a>
+                    <a href="#about"
+                        class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">About</a>
+                    <a href="#skills"
+                        class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Skills</a>
+                    <a href="#projects"
+                        class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Projects</a>
+                    <a href="#contact"
+                        class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Contact</a>
+
+                    <!-- Mobile Auth Buttons -->
+                    <div id="mobile-auth-buttons" class="pt-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
+                        <a href="auth.html"
+                            class="block w-full text-center px-4 py-2 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                            Sign In
+                        </a>
+                        <a href="auth.html?mode=signup"
+                            class="block w-full text-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+                            Sign Up
+                        </a>
+                    </div>
+
+                    <!-- Mobile User Profile -->
+                    <div id="mobile-user-profile"
+                        class="hidden pt-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div
+                                class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                                <span id="mobile-user-initial" class="text-white font-semibold"></span>
+                            </div>
+                            <span id="mobile-user-name" class="font-medium"></span>
+                        </div>
+                        <button id="mobile-logout-btn"
+                            class="w-full text-left px-4 py-2 text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden">
+        <!-- Animated Background -->
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+        </div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-blue-500/10 rounded-full animate-float"></div>
+        <div class="absolute top-40 right-20 w-16 h-16 bg-purple-500/10 rounded-full animate-float"
+            style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-40 left-20 w-12 h-12 bg-pink-500/10 rounded-full animate-float"
+            style="animation-delay: 2s;"></div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div
+                class="flex flex-col md:flex-row items-center justify-center animate-on-scroll gap-20 max-w-10xl mx-auto">
+                <div class="md:w-1/2 text-left">
+                    <h1
+                        class="text-5xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                        Muhammad Bagas Malik Albani
+                    </h1>
+
+                    <div class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 h-8">
+                        <span id="jobTitle">Frontend Developer</span>
+                    </div>
+
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">
+                        I specialize in building clean, responsive websites using HTML, CSS, JavaScript, and PHP. With a
+                        strong foundation in C++ programming and computer networking, I also work with Cisco Packet
+                        Tracer, server configuration, and WordPress deployment. I’m passionate about creating digital
+                        solutions that are not only functional but also user-friendly and impactful.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-start items-center">
+                        <a href="#projects"
+                            class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <i class="fas fa-rocket mr-2"></i>
+                            View My Work
+                        </a>
+                        <a href="#contact"
+                            class="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-full hover:border-blue-500 hover:text-blue-500 transition-all duration-300">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Get In Touch
+                        </a>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex justify-start space-x-6 mt-12">
+                        <a href="#"
+                            class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transform hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#"
+                            class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transform hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#"
+                            class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transform hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#"
+                            class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transform hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="md:w-6/6">
+                    <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
+                        alt="Bagas"
+                        class="w-102 h-102 rounded-full border-4 border-white shadow-2xl hover:scale-110 transition-transform duration-300 mx-auto md:mx-35">
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl text-gray-400"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="animate-on-scroll text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    About Me
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Get to know more about my journey, passion, and what drives me in the world of technology.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            alt="About Me"
+                            class="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300">
+                        <div
+                            class="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-code text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll space-y-6">
+                    <h3 class="text-3xl font-bold text-gray-900 dark:text-white">
+                        Crafting Digital Experiences
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Hi, I’m Muhammad Bagas Malik Albani — a Front-End Developer and Computer Technician with a
+                        passion for clean code, responsive design, and practical tech solutions. I specialize in HTML,
+                        CSS, JavaScript, PHP, and C++, creating user-friendly websites that combine performance and
+                        visual appeal.
+                    </p>
+
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        With a strong foundation in networking using tools like Cisco Packet Tracer and experience
+                        managing servers and WordPress environments, I bring both frontend finesse and backend
+                        understanding to every project. I'm detail-oriented, collaborative, and committed to delivering
+                        high-quality digital work that solves real-world problems.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 pt-6">
+                        <div
+                            class="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">50+</div>
+                            <div class="text-gray-600 dark:text-gray-400">Projects Completed</div>
+                        </div>
+                        <div
+                            class="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <div class="text-3xl font-bold text-purple-600 mb-2">3+</div>
+                            <div class="text-gray-600 dark:text-gray-400">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="animate-on-scroll text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Skills & Expertise
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Technologies and tools I use to bring ideas to life
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Web Development Skills -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mr-4 text-2xl">
+                            👨‍💻
+                        </div>
+                        <h3 class="text-xl font-bold">Web Development</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">HTML5</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">CSS3 (Flexbox, Grid, Responsive Design)</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">JavaScript (DOM Manipulation, Events)</span>
+                                <span class="text-sm text-gray-500">55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="55"></div>
+                            </div>
+                        </div>
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">PHP (Basic to Intermediate)</span>
+                                <span class="text-sm text-gray-500">20%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="20"></div>
+                            </div>
+                        </div>
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">WordPress Setup & Customization</span>
+                                <span class="text-sm text-gray-500">35%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="35"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programming Skills -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mr-4 text-2xl">
+                            🖥️
+                        </div>
+                        <h3 class="text-xl font-bold">Programming</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">C++ (Basic to Intermediate Level: logic, structure,
+                                    syntax)</span>
+                                <span class="text-sm text-gray-500">60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="60"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">JavaScript</span>
+                                <span class="text-sm text-gray-500">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">PHP</span>
+                                <span class="text-sm text-gray-500">20%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="20"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Networking & Server skills -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-4 text-2xl">
+                            🌐
+                        </div>
+                        <h3 class="text-xl font-bold">Networking & Server</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Cisco Packet Tracer (Topology Design, IP Addressing,
+                                    Routing)</span>
+                                <span class="text-sm text-gray-500">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Ubuntu Server Configuration</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Debian Server Configuration</span>
+                                <span class="text-sm text-gray-500">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Apache, MySQL, phpMyAdmin</span>
+                                <span class="text-sm text-gray-500">55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="55"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">WordPress Installation & Setup</span>
+                                <span class="text-sm text-gray-500">60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="60"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="flex items-center mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-4 text-2xl">
+                            🧠
+                        </div>
+                        <h3 class="text-xl font-bold">Soft Skills</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Detail-oriented and organized</span>
+                                <span class="text-sm text-gray-500">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Problem solving and troubleshooting</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Consistent and goal-driven</span>
+                                <span class="text-sm text-gray-500">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Able to work independently or in a team</span>
+                                <span class="text-sm text-gray-500">55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="55"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-container">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Git/Github</span>
+                                <span class="text-sm text-gray-500">40%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="40"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificat" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="animate-on-scroll text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Certificates & Achievements
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Recognition of my skills and professional development
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Certificate 1 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-certificate text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">CCNA: Introduction to Networks
+                        </h3>
+                        <p class="text-blue-600 dark:text-blue-400 mb-4">Issued by: Cisco Networking Academy • November
+                            2024</p>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Certified for successfully completing CCNAv7: Introduction to Networks, covering essential
+                            concepts in network fundamentals through the Cisco Networking Academy program.
+                        </p>
+                        <div class="mt-6">
+                            <a href="https://www.netacad.com/certificates?issuanceId=95d59154-c8de-4818-913e-f30f855eaac3"
+                                class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center">
+                                View Certificate <i class="fas fa-external-link-alt ml-2"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-network-wired text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">CCNA: Switching, Routing, and
+                            Wireless Essentials</h3>
+                        <p class="text-purple-600 dark:text-purple-400 mb-4">Issued by: Cisco Networking Academy (via
+                            COMLAB-IT Net-SMLC) • February 2025</p>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Certified for completing training in Switching, Routing, and Wireless Essentials, focusing
+                            on configuration, troubleshooting, and wireless networking using Cisco Packet Tracer.
+                        </p>
+                        <div class="mt-6">
+                            <a href="https://www.netacad.com/certificates?issuanceId=23ce099c-c72d-4a36-a851-081485b35f94"
+                                class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center">
+                                View Certificate <i class="fas fa-external-link-alt ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="animate-on-scroll text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    My Projects
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    A showcase of my recent work and accomplishments
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">E-Commerce Website</h3>
+                        <p class="text-blue-600 dark:text-blue-400 mb-4">HTML, CSS, JavaScript, PHP</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Developed a fully responsive e-commerce platform with product filtering, cart functionality,
+                            and secure checkout process.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">View Project</a>
+                            <span class="text-sm text-gray-500">Completed: Jan 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-network-wired text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Enterprise Network Design</h3>
+                        <p class="text-purple-600 dark:text-purple-400 mb-4">Cisco Packet Tracer</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Designed and implemented a scalable enterprise network infrastructure with VLANs, routing
+                            protocols, and security measures.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-purple-600 dark:text-purple-400 hover:underline">View Project</a>
+                            <span class="text-sm text-gray-500">Completed: Mar 2022</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
+                        <i class="fas fa-server text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Web Server Configuration</h3>
+                        <p class="text-green-600 dark:text-green-400 mb-4">Ubuntu, Apache, MySQL, PHP</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Configured and optimized a LAMP stack server for high-traffic WordPress sites with security
+                            hardening and caching.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-green-600 dark:text-green-400 hover:underline">View Project</a>
+                            <span class="text-sm text-gray-500">Completed: Nov 2022</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Mobile-First Dashboard</h3>
+                        <p class="text-yellow-600 dark:text-yellow-400 mb-4">HTML, CSS, JavaScript</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Created an analytics dashboard with responsive design principles and interactive data
+                            visualizations.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-yellow-600 dark:text-yellow-400 hover:underline">View Project</a>
+                            <span class="text-sm text-gray-500">Completed: Aug 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-red-500 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">POS System</h3>
+                        <p class="text-red-600 dark:text-red-400 mb-4">PHP, MySQL, JavaScript</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Built a point-of-sale system with inventory management, sales reporting, and barcode
+                            scanning integration.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-red-600 dark:text-red-400 hover:underline">View Project</a>
+                            <span class="text-sm text-gray-500">Completed: May 2022</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center">
+                        <i class="fas fa-blog text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">CMS Blog Platform</h3>
+                        <p class="text-indigo-600 dark:text-indigo-400 mb-4">WordPress, PHP, MySQL</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Custom WordPress theme development with SEO optimization, custom post types, and membership
+                            features.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">View Project</a>
+                            <span class="text-sm text-gray-500">Completed: Feb 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-teal-500 to-cyan-500 flex items-center justify-center">
+                        <i class="fas fa-gamepad text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Browser Game</h3>
+                        <p class="text-teal-600 dark:text-teal-400 mb-4">JavaScript, Canvas API</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Developed an interactive 2D game with physics, collision detection, and score tracking using
+                            vanilla JavaScript.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-teal-600 dark:text-teal-400 hover:underline">View Project</a>
+                            <span class="text-sm text-gray-500">Completed: Jul 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div
+                    class="animate-on-scroll bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-pink-500 to-rose-500 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Data Visualization Tool</h3>
+                        <p class="text-pink-600 dark:text-pink-400 mb-4">JavaScript, Chart.js, API</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Built a real-time data dashboard that fetches and visualizes JSON data with interactive
+                            charts and filters.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-pink-600 dark:text-pink-400 hover:underline">View Project</a>
+                            <span class="text-sm text-gray-500">Completed: Apr 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="animate-on-scroll text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Get In Touch
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Have a project in mind or want to collaborate? I'd love to hear from you!
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="animate-on-scroll bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Me a Message</h3>
+                    <form name="contact-form" id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="email"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="subject"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="message"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl font-medium">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="animate-on-scroll space-y-8">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700 dark:text-gray-300">Email</h4>
+                                    <a href="mailto:contact@example.com"
+                                        class="text-blue-600 dark:text-blue-400 hover:underline">muhammadbagasmalikalbani@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400">
+                                    <i class="fas fa-phone-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700 dark:text-gray-300">Phone</h4>
+                                    <a href="tel:+1234567890"
+                                        class="text-blue-600 dark:text-blue-400 hover:underline">+62 823-1186-1101</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-pink-500/10 rounded-full flex items-center justify-center text-pink-600 dark:text-pink-400">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700 dark:text-gray-300">Location</h4>
+                                    <p class="text-gray-600 dark:text-gray-400">Depok, Indonesia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Connect With Me</h3>
+                        <div class="flex justify-center space-x-6">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transform hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transform hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-pink-500 hover:text-white transform hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 hover:text-white transform hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">B</span>
+                    </div>
+                    <span class="text-xl font-bold">Bagas</span>
+                </div>
+
+                <p class="text-gray-400 mb-6 max-w-md mx-auto">
+                    Creating digital experiences that make a difference. Let's build something amazing together.
+                </p>
+
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+
+                <div class="border-t border-gray-800 pt-8">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Bagas. All rights reserved. Made with ❤️ and lots of ☕
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="fab-top" class="fab-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+</body>
+
+</html>
