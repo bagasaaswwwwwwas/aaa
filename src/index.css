@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode colors */
+    --color-primary: 59 130 246; /* blue-500 */
+    --color-primary-hover: 37 99 235; /* blue-600 */
+    --color-secondary: 99 102 241; /* indigo-500 */
+    --color-accent: 168 85 247; /* purple-500 */
+    --color-success: 34 197 94; /* green-500 */
+    --color-warning: 245 158 11; /* amber-500 */
+    --color-error: 239 68 68; /* red-500 */
+    
+    /* Light mode backgrounds */
+    --color-bg-primary: 255 255 255; /* white */
+    --color-bg-secondary: 249 250 251; /* gray-50 */
+    --color-bg-tertiary: 243 244 246; /* gray-100 */
+    --color-bg-card: 255 255 255; /* white */
+    --color-bg-overlay: 0 0 0 / 0.5;
+    
+    /* Light mode text */
+    --color-text-primary: 17 24 39; /* gray-900 */
+    --color-text-secondary: 75 85 99; /* gray-600 */
+    --color-text-tertiary: 107 114 128; /* gray-500 */
+    --color-text-muted: 156 163 175; /* gray-400 */
+    
+    /* Light mode borders */
+    --color-border-primary: 229 231 235; /* gray-200 */
+    --color-border-secondary: 209 213 219; /* gray-300 */
+    --color-border-focus: 59 130 246; /* blue-500 */
+  }
+
+  .dark {
+    /* Dark mode colors */
+    --color-primary: 96 165 250; /* blue-400 */
+    --color-primary-hover: 59 130 246; /* blue-500 */
+    --color-secondary: 129 140 248; /* indigo-400 */
+    --color-accent: 196 181 253; /* purple-300 */
+    --color-success: 74 222 128; /* green-400 */
+    --color-warning: 251 191 36; /* amber-400 */
+    --color-error: 248 113 113; /* red-400 */
+    
+    /* Dark mode backgrounds */
+    --color-bg-primary: 17 24 39; /* gray-900 */
+    --color-bg-secondary: 31 41 55; /* gray-800 */
+    --color-bg-tertiary: 55 65 81; /* gray-700 */
+    --color-bg-card: 31 41 55; /* gray-800 */
+    --color-bg-overlay: 0 0 0 / 0.7;
+    
+    /* Dark mode text */
+    --color-text-primary: 249 250 251; /* gray-50 */
+    --color-text-secondary: 209 213 219; /* gray-300 */
+    --color-text-tertiary: 156 163 175; /* gray-400 */
+    --color-text-muted: 107 114 128; /* gray-500 */
+    
+    /* Dark mode borders */
+    --color-border-primary: 75 85 99; /* gray-600 */
+    --color-border-secondary: 107 114 128; /* gray-500 */
+    --color-border-focus: 96 165 250; /* blue-400 */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .bg-bg-primary { background-color: rgb(var(--color-bg-primary)); }
+  .bg-bg-secondary { background-color: rgb(var(--color-bg-secondary)); }
+  .bg-bg-tertiary { background-color: rgb(var(--color-bg-tertiary)); }
+  .bg-bg-card { background-color: rgb(var(--color-bg-card)); }
+  
+  .text-text-primary { color: rgb(var(--color-text-primary)); }
+  .text-text-secondary { color: rgb(var(--color-text-secondary)); }
+  .text-text-tertiary { color: rgb(var(--color-text-tertiary)); }
+  .text-text-muted { color: rgb(var(--color-text-muted)); }
+  
+  .border-border { border-color: rgb(var(--color-border-primary)); }
+  .border-border-secondary { border-color: rgb(var(--color-border-secondary)); }
+  
+  .bg-primary { background-color: rgb(var(--color-primary)); }
+  .bg-primary-hover { background-color: rgb(var(--color-primary-hover)); }
+  .text-primary { color: rgb(var(--color-primary)); }
+  
+  .shadow-elegant {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+  
+  .shadow-elegant-lg {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  
+  .dark .shadow-elegant {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+  }
+  
+  .dark .shadow-elegant-lg {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-bg-secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-border-secondary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-text-tertiary));
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
